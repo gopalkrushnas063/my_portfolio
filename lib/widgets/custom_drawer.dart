@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:pie_chart/pie_chart.dart';
+import 'package:my_portfolio/controller/certification_controller.dart';
 
 Drawer buildDrawer(BuildContext context) {
   return Drawer(
@@ -41,7 +41,7 @@ Drawer buildDrawer(BuildContext context) {
                         ),
                       ),
                       Text(
-                        "My Profile",
+                        "Gopal Krushna Sahoo",
                         style: GoogleFonts.actor(
                           textStyle: const TextStyle(
                             color: Colors.white,
@@ -143,7 +143,9 @@ Drawer buildDrawer(BuildContext context) {
                     ),
                   ),
                 ),
-                onTap: () {},
+                onTap: () {
+                  Get.toNamed("/projects");
+                },
               ),
               ListTile(
                 leading: const FaIcon(
@@ -158,7 +160,9 @@ Drawer buildDrawer(BuildContext context) {
                     ),
                   ),
                 ),
-                onTap: () {},
+                onTap: () {
+                  Get.toNamed("/certification");
+                },
               ),
               ListTile(
                 leading: const FaIcon(FontAwesomeIcons.file),
@@ -170,30 +174,56 @@ Drawer buildDrawer(BuildContext context) {
                     ),
                   ),
                 ),
-                onTap: () {},
+                onTap: () {
+                  Get.toNamed("/resume");
+                },
               ),
+              
             ],
           ),
         ),
-       
-        Padding(
-          padding: const EdgeInsets.only(bottom: 30.0),
-          child: Row(
-            children: [
-              Expanded(
-                child: PieChart(
-                  dataMap: const {
-                    'Flutter': 5,
-                    'Dart': 3,
-                    'Others': 2,
-                  },
-                  chartType: ChartType.disc,
-                  chartRadius: MediaQuery.of(context).size.width / 4,
-                ),
-              ),
-            ],
-          ),
-        ),
+        // Padding(
+        //   padding: const EdgeInsets.only(bottom: 33.0),
+        //   child: ClipRRect(
+        //     borderRadius: BorderRadius.circular(12),
+        //     child: Container(
+        //       decoration: BoxDecoration(
+        //         border: Border.all(
+        //           color: Colors.grey, 
+        //           width: 1.5,
+        //         ),
+        //         borderRadius: BorderRadius.circular(12),
+        //       ),
+        //       child: ClipRRect(
+        //         borderRadius: BorderRadius.circular(
+        //             10),
+        //         child: Image.asset(
+        //           "assets/images/git_stats.png",
+        //           width: 280,
+        //         ),
+        //       ),
+        //     ),
+        //   ),
+        // ),
+
+        // Padding(
+        //   padding: const EdgeInsets.only(bottom: 30.0),
+        //   child: Row(
+        //     children: [
+        //       Expanded(
+        //         child: PieChart(
+        //           dataMap: const {
+        //             'Flutter': 5,
+        //             'Dart': 3,
+        //             'Others': 2,
+        //           },
+        //           chartType: ChartType.disc,
+        //           chartRadius: MediaQuery.of(context).size.width / 4,
+        //         ),
+        //       ),
+        //     ],
+        //   ),
+        // ),
       ],
     ),
   );

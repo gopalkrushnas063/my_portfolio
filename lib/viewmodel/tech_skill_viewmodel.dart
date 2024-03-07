@@ -4,7 +4,6 @@ import 'package:http/http.dart' as http;
 import 'package:my_portfolio/model/tech_skill_model.dart';
 
 
-
 class TechSkillViewModel extends GetxController {
    var isLoading = true.obs;
   var techSkills = <TechSkillModel>[].obs;

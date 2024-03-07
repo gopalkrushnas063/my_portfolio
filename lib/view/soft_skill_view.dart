@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:my_portfolio/model/soft_skill_model.dart';
 import 'package:my_portfolio/viewmodel/soft_skill_viemodel.dart';
-
+import 'package:my_portfolio/widgets/custom_drawer.dart';
 
 class SoftSkillView extends StatelessWidget {
   final SoftSkillViewModel _controller = Get.put(SoftSkillViewModel());
@@ -14,6 +14,7 @@ class SoftSkillView extends StatelessWidget {
         title: const Text('Soft Skills'),
         elevation: 0,
       ),
+      drawer: buildDrawer(context),
       body: Obx(() {
         if (_controller.isLoading.value) {
           return Center(
@@ -63,7 +64,7 @@ class SoftSkillView extends StatelessWidget {
                             skill.title,
                             style: const TextStyle(
                               color: Colors.black,
-                              fontSize: 18,
+                              fontSize: 12,
                               fontWeight: FontWeight.bold,
                             ),
                             textAlign: TextAlign.center,
@@ -104,8 +105,8 @@ class SoftSkillView extends StatelessWidget {
           children: [
             Image.network(
               skill.imageUrl,
-              height: 200,
-              fit: BoxFit.cover,
+              height: 150,
+              fit: BoxFit.fitHeight,
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),
@@ -113,7 +114,7 @@ class SoftSkillView extends StatelessWidget {
                 skill.title,
                 style: const TextStyle(
                   color: Colors.black,
-                  fontSize: 20,
+                  fontSize: 18,
                   fontWeight: FontWeight.bold,
                 ),
                 textAlign: TextAlign.center,
@@ -125,8 +126,9 @@ class SoftSkillView extends StatelessWidget {
                 skill.description,
                 style: const TextStyle(
                   color: Colors.black,
-                  fontSize: 16,
+                  fontSize: 12,
                 ),
+                maxLines: 2,
                 textAlign: TextAlign.justify,
               ),
             ),

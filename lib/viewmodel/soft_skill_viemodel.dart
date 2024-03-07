@@ -3,8 +3,6 @@ import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:my_portfolio/model/soft_skill_model.dart';
 
-
-
 class SoftSkillViewModel extends GetxController {
    var isLoading = true.obs;
   var softSkills = <SoftSkillModel>[].obs;
