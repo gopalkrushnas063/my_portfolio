@@ -1,16 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:my_portfolio/controller/certification_controller.dart';
 
 class CertificationView extends StatelessWidget {
-  final CertificationController _certificationController = Get.put(CertificationController());
-
+  final CertificationController _certificationController =
+      Get.put(CertificationController());
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Certifications'),
+        title: Text(
+          'Certifications',
+          style: GoogleFonts.aBeeZee(),
+        ),
       ),
       body: Obx(
         () => _certificationController.isLoading.value
@@ -32,7 +36,7 @@ class CertificationView extends StatelessWidget {
                             padding: const EdgeInsets.all(8.0),
                             child: Text(
                               certification.name,
-                              style: const TextStyle(
+                              style: GoogleFonts.aBeeZee(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 16,
                               ),
@@ -45,20 +49,23 @@ class CertificationView extends StatelessWidget {
                               onPressed: () {
                                 Get.dialog(
                                   AlertDialog(
-                                    title: Text('Certificate'),
+                                    title: const Text('Certificate'),
                                     content: Image.network(certification.image),
                                     actions: [
                                       TextButton(
                                         onPressed: () {
                                           Get.back();
                                         },
-                                        child: Text('Close'),
+                                        child: const Text('Close'),
                                       ),
                                     ],
                                   ),
                                 );
                               },
-                              child: const Text("View Certificate"),
+                              child: Text(
+                                "View Certificate",
+                                style: GoogleFonts.aBeeZee(),
+                              ),
                             ),
                           )
                         ],
