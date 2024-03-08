@@ -182,29 +182,29 @@ Drawer buildDrawer(BuildContext context) {
             ],
           ),
         ),
-        // Padding(
-        //   padding: const EdgeInsets.only(bottom: 33.0),
-        //   child: ClipRRect(
-        //     borderRadius: BorderRadius.circular(12),
-        //     child: Container(
-        //       decoration: BoxDecoration(
-        //         border: Border.all(
-        //           color: Colors.grey, 
-        //           width: 1.5,
-        //         ),
-        //         borderRadius: BorderRadius.circular(12),
-        //       ),
-        //       child: ClipRRect(
-        //         borderRadius: BorderRadius.circular(
-        //             10),
-        //         child: Image.asset(
-        //           "assets/images/git_stats.png",
-        //           width: 280,
-        //         ),
-        //       ),
-        //     ),
-        //   ),
-        // ),
+        Padding(
+          padding: const EdgeInsets.only(bottom: 33.0),
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(12),
+            child: Container(
+              decoration: BoxDecoration(
+                border: Border.all(
+                  color: Colors.grey, 
+                  width: 1.5,
+                ),
+                borderRadius: BorderRadius.circular(12),
+              ),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(
+                    10),
+                child: Image.asset(
+                  "assets/images/git_stats.png",
+                  width: 280,
+                ),
+              ),
+            ),
+          ),
+        ),
 
         // Padding(
         //   padding: const EdgeInsets.only(bottom: 30.0),
