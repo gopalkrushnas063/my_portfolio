@@ -79,22 +79,22 @@ class ProjectView extends StatelessWidget {
                                     case 'flutter':
                                       imageWidget = Image.network(
                                         'https://gopalkrushnas063.github.io/images/skills/flutter.png',
-                                        height: 30,
-                                        width: 40,
+                                        height: 20,
+                                        width: 20,
                                       );
                                       break;
                                     case 'dart':
                                       imageWidget = Image.network(
-                                        'https://gopalkrushnas063.github.io/images/skills/dart.png',
-                                        height: 30,
-                                        width: 50,
+                                        'https://github.com/gopalkrushnas063/portfolio_json/assets/103574856/1984bee5-35c8-4ddb-94ed-d056c0fb1098',
+                                        height: 44,
+                                        width: 44,
                                       );
                                       break;
                                     case 'html':
                                       imageWidget = Image.network(
                                         'https://gopalkrushnas063.github.io/images/skills/html.png',
                                         height: 30,
-                                        width: 50,
+                                        width: 30,
                                       );
                                       break;
                                     case 'css':
@@ -155,16 +155,10 @@ class ProjectView extends StatelessWidget {
                                       );
                                       break;
                                     case 'github':
-                                      imageWidget = ColorFiltered(
-                                        colorFilter: const ColorFilter.mode(
-                                          Colors.black,
-                                          BlendMode.srcIn,
-                                        ),
-                                        child: Image.network(
-                                          'https://gopalkrushnas063.github.io/images/gitHub.png',
-                                          height: 35,
-                                          width: 50,
-                                        ),
+                                      imageWidget = Image.network(
+                                        'https://github.com/gopalkrushnas063/portfolio_json/assets/103574856/ebdada98-5714-4ab7-8ff9-60b0091ab966',
+                                        height: 28,
+                                        width: 45,
                                       );
                                       break;
                                     default:

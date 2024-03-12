@@ -25,7 +25,7 @@ class ResumeScreen extends StatelessWidget {
               return FlutterResumeTemplate(
                 data: data,
                 templateTheme: controller.theme.value,
-                mode: TemplateMode.onlyEditableMode,
+                mode: TemplateMode.readOnlyMode,
                 showButtons: false,
                 imageBoxFit: BoxFit.cover,
                 // Remove the fixed height to allow flexible sizing
