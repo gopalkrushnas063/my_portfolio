@@ -8,17 +8,41 @@ import 'package:my_portfolio/view/certification_view.dart';
 import 'package:my_portfolio/view/home_view.dart';
 import 'package:my_portfolio/view/project_view.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
+  @override
+  _HomePageState createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
   final BottomNavigationController _bottomNavigationController =
       Get.put(BottomNavigationController());
   final PageController _pageController = PageController();
-  
+
   final List<Widget> _pages = [
     HomeView(),
     AboutView(),
     ProjectView(),
     CertificationView()
   ];
+
+  @override
+  void initState() {
+    super.initState();
+    _pageController.addListener(_pageListener);
+  }
+
+  @override
+  void dispose() {
+    _pageController.removeListener(_pageListener);
+    super.dispose();
+  }
+
+  void _pageListener() {
+    final int currentIndex = _pageController.page?.round() ?? 0;
+    if (currentIndex != _bottomNavigationController.selectedIndex.value) {
+      _bottomNavigationController.changeTabIndex(currentIndex);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {

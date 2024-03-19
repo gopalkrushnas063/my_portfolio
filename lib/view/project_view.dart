@@ -58,7 +58,7 @@ class ProjectView extends StatelessWidget {
                               // Title
                               Text(
                                 project.name,
-                                style:  GoogleFonts.aBeeZee(
+                                style: GoogleFonts.aBeeZee(
                                   fontWeight: FontWeight.bold,
                                   fontSize: 16,
                                 ),
@@ -66,7 +66,7 @@ class ProjectView extends StatelessWidget {
                               const SizedBox(height: 5),
                               Text(
                                 project.description,
-                                style:  GoogleFonts.aBeeZee(fontSize: 14),
+                                style: GoogleFonts.aBeeZee(fontSize: 14),
                                 textAlign: TextAlign.justify,
                               ),
                               const SizedBox(height: 10),
@@ -181,6 +181,20 @@ class ProjectView extends StatelessWidget {
                                   );
                                 }).toList(),
                               ),
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
+                                children: [
+                                  ElevatedButton(
+                                    onPressed: () {},
+                                    child: const Text("GitHub"),
+                                  ),
+                                  ElevatedButton(
+                                    onPressed: () {},
+                                    child: const Text("Live Link"),
+                                  ),
+                                ],
+                              )
                             ],
                           ),
                         ),
