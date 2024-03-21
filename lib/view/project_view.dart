@@ -158,7 +158,7 @@ class ProjectView extends StatelessWidget {
                                       imageWidget = Image.network(
                                         'https://github.com/gopalkrushnas063/portfolio_json/assets/103574856/ebdada98-5714-4ab7-8ff9-60b0091ab966',
                                         height: 28,
-                                        width: 45,
+                                        width: 33,
                                       );
                                       break;
                                     default:
