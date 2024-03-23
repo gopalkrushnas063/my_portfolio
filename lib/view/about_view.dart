@@ -8,13 +8,13 @@ import 'package:my_portfolio/viewmodel/about_view_model.dart';
 import 'package:my_portfolio/widgets/custom_drawer.dart';
 import 'package:my_portfolio/widgets/pie_chart_widget.dart';
 import 'package:my_portfolio/widgets/settings_widget.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 // ignore: use_key_in_widget_constructors
 class AboutView extends StatelessWidget {
   final AboutViewModel aboutViewModel = Get.put(AboutViewModel());
   final PieChartController pieChartController = Get.put(PieChartController());
   final DataController dataController = Get.put(DataController());
-
 
   @override
   Widget build(BuildContext context) {
@@ -59,6 +59,31 @@ class AboutView extends StatelessWidget {
                     textAlign: TextAlign.justify,
                   ),
                   const SizedBox(height: 16),
+                  // Table(
+                  //   border: TableBorder.all(color: Colors.grey),
+                  //   columnWidths: const {
+                  //     0: FlexColumnWidth(1),
+                  //     1: FlexColumnWidth(3),
+                  //   },
+                  //   children: [
+                  //     _buildTableRow(
+                  //         "Date of Birth", aboutViewModel.aboutModel.value.dob),
+                  //     _buildTableRow(
+                  //         "Age", aboutViewModel.aboutModel.value.age),
+                  //     _buildTableRow(
+                  //         "Website", aboutViewModel.aboutModel.value.webUrl),
+                  //     _buildTableRow(
+                  //         "Email", aboutViewModel.aboutModel.value.email),
+                  //     _buildTableRow(
+                  //         "Degree", aboutViewModel.aboutModel.value.degree),
+                  //     _buildTableRow(
+                  //         "Phone", aboutViewModel.aboutModel.value.phone),
+                  //     _buildTableRow(
+                  //         "Address", aboutViewModel.aboutModel.value.address),
+                  //     _buildTableRow(
+                  //         "GitHub", aboutViewModel.aboutModel.value.github),
+                  //   ],
+                  // ),
                   Table(
                     border: TableBorder.all(color: Colors.grey),
                     columnWidths: const {
@@ -66,24 +91,25 @@ class AboutView extends StatelessWidget {
                       1: FlexColumnWidth(3),
                     },
                     children: [
+                      _buildTableRow(context, "Date of Birth",
+                          aboutViewModel.aboutModel.value.dob),
                       _buildTableRow(
-                          "Date of Birth", aboutViewModel.aboutModel.value.dob),
-                      _buildTableRow(
-                          "Age", aboutViewModel.aboutModel.value.age),
-                      _buildTableRow(
-                          "Website", aboutViewModel.aboutModel.value.webUrl),
-                      _buildTableRow(
-                          "Email", aboutViewModel.aboutModel.value.email),
-                      _buildTableRow(
-                          "Degree", aboutViewModel.aboutModel.value.degree),
-                      _buildTableRow(
-                          "Phone", aboutViewModel.aboutModel.value.phone),
-                      _buildTableRow(
-                          "Address", aboutViewModel.aboutModel.value.address),
-                      _buildTableRow(
-                          "GitHub", aboutViewModel.aboutModel.value.github),
+                          context, "Age", aboutViewModel.aboutModel.value.age),
+                      _buildTableRow(context, "Website",
+                          aboutViewModel.aboutModel.value.webUrl),
+                      _buildTableRow(context, "Email",
+                          aboutViewModel.aboutModel.value.email),
+                      _buildTableRow(context, "Degree",
+                          aboutViewModel.aboutModel.value.degree),
+                      _buildTableRow(context, "Phone",
+                          aboutViewModel.aboutModel.value.phone),
+                      _buildTableRow(context, "Address",
+                          aboutViewModel.aboutModel.value.address),
+                      _buildTableRow(context, "GitHub",
+                          aboutViewModel.aboutModel.value.github),
                     ],
                   ),
+
                   const SizedBox(height: 16),
                   LayoutBuilder(
                     builder: (_, constraints) {
@@ -260,7 +286,33 @@ class AboutView extends StatelessWidget {
     );
   }
 
-  TableRow _buildTableRow(String label, String value) {
+  // TableRow _buildTableRow(String label, String value) {
+  //   return TableRow(
+  //     children: [
+  //       TableCell(
+  //         child: Padding(
+  //           padding: const EdgeInsets.only(left: 4.0),
+  //           child: Text(
+  //             label,
+  //             style: GoogleFonts.aBeeZee(
+  //                 fontWeight: FontWeight.w600, fontSize: 12),
+  //           ),
+  //         ),
+  //       ),
+  //       TableCell(
+  //         child: Padding(
+  //           padding: const EdgeInsets.all(2.0),
+  //           child: Text(
+  //             value,
+  //             style: GoogleFonts.aBeeZee(
+  //                 fontWeight: FontWeight.w400, fontSize: 12),
+  //           ),
+  //         ),
+  //       ),
+  //     ],
+  //   );
+  // }
+  TableRow _buildTableRow(BuildContext context, String label, String value) {
     return TableRow(
       children: [
         TableCell(
@@ -276,14 +328,65 @@ class AboutView extends StatelessWidget {
         TableCell(
           child: Padding(
             padding: const EdgeInsets.all(2.0),
-            child: Text(
-              value,
-              style: GoogleFonts.aBeeZee(
-                  fontWeight: FontWeight.w400, fontSize: 12),
+            child: GestureDetector(
+              onTap: () {
+                _handleTap(context, label, value);
+              },
+              child: Text(
+                value,
+                style: GoogleFonts.aBeeZee(
+                    fontWeight: FontWeight.w400, fontSize: 12),
+              ),
             ),
           ),
         ),
       ],
     );
+  }
+
+  void _handleTap(BuildContext context, String label, String value) {
+    switch (label) {
+      case "GitHub":
+        _launchURL(value);
+        break;
+      case "Phone":
+        _launchPhone(value);
+        break;
+      case "Email":
+        _launchEmail(value);
+        break;
+      case "Website":
+        _launchURL(value);
+        break;
+      // Add more cases as needed
+      default:
+        break;
+    }
+  }
+
+  void _launchURL(String url) async {
+    try {
+      await launch(url, forceSafariVC: false);
+    } catch (e) {
+      print('Error launching URL: $e');
+    }
+  }
+
+  void _launchPhone(String phoneNumber) async {
+    final String url = 'tel:$phoneNumber';
+    try {
+      await launch(url, forceSafariVC: false);
+    } catch (e) {
+      print('Error launching URL: $e');
+    }
+  }
+
+  void _launchEmail(String email) async {
+    final String url = 'mailto:$email';
+    try {
+      await launch(url, forceSafariVC: false);
+    } catch (e) {
+      print('Error launching URL: $e');
+    }
   }
 }
